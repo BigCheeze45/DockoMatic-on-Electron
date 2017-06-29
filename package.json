@@ -1,10 +1,13 @@
 {
-  "name" : "DockoMatic",
+  "name": "DockoMatic",
   "version": "2.0.0",
-  "main" : "main.js",
-  "author" : "Prince Kannah",
-  "license" : "UPDATE ME",
-  "scripts" : {
-    "start" : "electron ."
+  "main": "main.js",
+  "author": "Prince Kannah",
+  "license": "UPDATE ME",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "semantic-ui": "^2.2.10"
   }
 }

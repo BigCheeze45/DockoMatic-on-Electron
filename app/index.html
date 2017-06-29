@@ -2,57 +2,53 @@
 <html lang="en">
 
   <head>
-    <!-- Required meta tags -->
+    <title>Bootstrap Example</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <div class="container-fluid">
-      <div class="row">
-        <!-- <div class="demo-content">.col-sm-3 .col-md-2</div>
-        </div>
-        <div class="col-sm-9 col-md-8">
-            <div class="demo-content bg-alt">.col-sm-9 .col-md-8</div>
-        </div>
-        <div class="col-sm-12 col-md-2">
-            <div class="demo-content flexible">.col-sm-12 .col-md-2</div>
-        </div> -->
-        <!-- bootstrap grid system is col major. First is large then medium
-      then small screen sizes -->
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <h4>Input Box</h4>
-          <form class="form-inline">
-            <label class="sr-only" for="inlineFormInput">AutoDockCycles</label>
-            <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="AutoDock cycles (ga_run)">
 
-            <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-              <label class="form-check-label">
-      <input class="form-check-input" type="checkbox">Use AutoDock Vina
-    </label>
-            </div>
-          </form>
+    <div class="container-fluid">
+      <h2>Panels with Contextual Classes</h2>
+      <div class="panel panel-default">
+        <div class="panel-heading">Input panel DEFAULT</div>
+        <div class="panel-body">
+          <div>
+            <form>
+              <div class="form-group">
+                <label for="autoDockCycles">AutoDock cycles</label>
+                <input type="email" class="form-control" id="autoDockCycles" aria-describedby="emailHelp" placeholder="AutoDock cycles (ga_run)">
+
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                <input type="checkbox" class="form-check-input">Use AutoDockVina
+              </label>
+              </div>
+            </form>
+          </div>
+          <div class="form-group">
+            <label for="outputDirectory">Output directory</label>
+            <input type="file" class="form-control-file" id="outputDirectory" aria-describedby="fileHelp">
+          </div>
+          
         </div>
-        <!-- <div class="col-lg-3 col-md-3 col-sm-6">
-          <h4>Output Box</h4> Nunc nibh magna, semper a massa id, blandit gravida nunc. Praesent vulputate sit amet est in varius. Mauris rutrum dui dui, at commodo nibh congue in. Sed quis mauris tincidunt, pellentesque purus sit amet, suscipit sem. Quisque accumsan, massa
-          vitae finibus pharetra, dui mauris maximus erat, non elementum leo sem quis dolor. Sed maximus erat ac diam porttitor porttitor faucibus quis nisi. Nullam dictum ex finibus mi volutpat suscipit. Donec in laoreet elit. Donec mi augue, hendrerit
-          sed venenatis egestas, commodo id dolor. Nullam vehicula suscipit velit quis semper.
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6">
-          <h4>Message Screen</h4> Nunc nibh magna, semper a massa id, blandit gravida nunc. Praesent vulputate sit amet est in varius. Mauris rutrum dui dui, at commodo nibh congue in. Sed quis mauris tincidunt, pellentesque purus sit amet, suscipit sem. Quisque accumsan, massa
-          vitae finibus pharetra, dui mauris maximus erat, non elementum leo sem quis dolor. Sed maximus erat ac diam porttitor porttitor faucibus quis nisi. Nullam dictum ex finibus mi volutpat suscipit. Donec in laoreet elit. Donec mi augue, hendrerit
-          sed venenatis egestas, commodo id dolor. Nullam vehicula suscipit velit quis semper.
-        </div> -->
-        <!-- <div class="clearfix visible-lg"></div> -->
+      </div>
+
+
+      <div class="panel panel-primary">
+        <div class="panel-heading">Output panel</div>
+        <div class="panel-body">Panel Content</div>
+      </div>
+      <div class="panel panel-info">
+        <div class="panel-heading">Message panel</div>
+        <div class="panel-body">Panel Content</div>
       </div>
     </div>
-
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </body>
 
 </html>
