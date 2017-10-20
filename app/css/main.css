@@ -1,4 +1,4 @@
-body {
+/*body {
   margin: 40px;
 }
 
@@ -8,9 +8,42 @@ body {
   grid-template-columns: 100px 100px 100px;
   background-color: #fff;
   color: #444;
+}*/
+
+
+/* This selects all hyperlink and removes the blue taint
+(i.e does not look like a link)  in use*/
+
+a {
+  text-decoration: none;
 }
 
-.box {
+hr {
+  text-decoration: none;
+}
+
+#swarm_jobs_per_node {
+  height: 200px;
+  font-size: 14pt;
+}
+
+.autodock_cycles {
+  width: 50px;
+}
+
+
+/*in use*/
+
+.line_side_by_side {
+  display: inline-block;
+}
+
+.padding {
+  padding-left: 10px
+}
+
+
+/*.box {
   background-color: #444;
   color: #fff;
   border-radius: 5px;
@@ -36,4 +69,4 @@ body {
 .d {
   grid-column: 2;
   grid-row: 2;
-}
+}*/
