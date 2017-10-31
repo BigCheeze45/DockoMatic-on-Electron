@@ -15,7 +15,7 @@ function initWindow() {
 
   // load UI from index.html
   appWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'app/index.html'),
+    pathname: path.join(__dirname, 'app/input.html'),
     protocol: 'file',
     slashes: true
   }));
