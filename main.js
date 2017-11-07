@@ -1,6 +1,12 @@
-const {app, BrowserWindow} = require('electron');
-const path = require('path');
-const url = require('url');
+const {
+  app,
+  BrowserWindow
+} = require('electron')
+const path = require('path')
+const glob = require('glob')
+const url = require('url')
+const ipc = require('electron').ipcMain
+const dialog = require('electron').dialog
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -10,8 +16,10 @@ let appWindow
  Funtion to create the initial application window
 */
 function initWindow() {
-  //TODO: add/remove settings once other compnonets have been added
-  appWindow = new BrowserWindow({center: true, useContentSize: true});
+  appWindow = new BrowserWindow({
+    center: true,
+    useContentSize: true
+  });
 
   // load UI from index.html
   appWindow.loadURL(url.format({
@@ -19,12 +27,12 @@ function initWindow() {
     protocol: 'file',
     slashes: true
   }));
-// DEVELOPER CONSOLE
-// appWindow.webContents.openDevTools()
+  // DEVELOPER CONSOLE
+  // appWindow.webContents.openDevTools()
   // Dereference the window object, usually you would store windows
   // in an array if your app supports multi windows, this is the time
   // when you should delete the corresponding element.
-  appWindow.on('closed', () =>{
+  appWindow.on('closed', () => {
     appWindow = null;
   });
 }
@@ -50,3 +58,13 @@ app.on('activate', () => {
     createWindow()
   }
 });
+
+// Require each JS file in the main-process dir
+function loadDemos() {
+  var files = glob.sync(path.join(__dirname, 'app/**/*.js'))
+  files.forEach(function (file) {
+    require(file)
+  })
+  // Note sure if this is needed but will leave uncomment for now
+  // autoUpdater.updateMenu()
+}

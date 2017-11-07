@@ -1,11 +1,9 @@
 <!doctype html>
-<html class="no-js" lang="en" dir="ltr">
-
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Foundation for Sites</title>
+  <title>DockoMatic - Input</title>
   <link rel="stylesheet" href="css/foundation/foundation.css">
   <link rel="stylesheet" href="css/foundation/foundation.min.css">
   <link rel="stylesheet" href="css/foundation/app.css">
@@ -22,20 +20,91 @@
 
       <div class="tabs-content" data-tabs-content="nav-tabs">
         <div class="tabs-panel is-active" id="input.html">
-          <p>One</p>
-          <p>INPUT</p>
-        </div>
-        <div class="tabs-panel" id="output.html">
-          <p>Two</p>
-          <p>OUTPUT</p>
-        </div>
-        <div class="tabs-panel" id="status.html">
-          <p>Three</p>
-          <p>STATUS</p>
+          <div class="callout clearfix secondary">
+            <form>
+              <label>AutoDock cycles (ga_run):
+                <!-- AutoDock cycles. Min is to prevent negative values via the selector -->
+                <input id="ADCycles" type="number" min="1" value="100" aria-describedby="ADCyclesHelpText">
+              </label>
+              <!-- Use AutoDock checkbox -->
+              <label class="float-right">Use AutoDock Vina
+                  <input type="checkbox"/>
+              </label>
+              <!-- Horizontal bar -->
+              <hr>
+
+              <!-- Ligand file selection  -->
+              <button class="button" id="ligandSelector">Ligand</button>
+              <input id="ligandDisplayArea" disabled type="text" placeholder="Your selected ligand (or list) file will appear here.">
+              <!-- Ligand file selection checkboxes -->
+              <label class="float-right">Use TIM Wizard
+                  <input id="ligandUseTIM" type="checkbox"/>
+              </label>
+              <label class="float-right">Use ligand list file
+                  <input id="ligandUseList" type="checkbox"/>
+              </label>
+              <!-- Horizontal bar -->
+              <hr>
+
+              <!-- Secondary ligand file selection  -->
+              <button class="button" id="secondaryLigandSelector">Secondary ligand</button>
+              <input id="secondaryLigandDisplayArea" disabled type="text" placeholder="Your selected secondary ligand (or list) file will appear here.">
+              <!-- Secondary file selection checkboxes -->
+              <label class="float-right">Use secondary ligand list file
+                  <input id="secondaryLigadUseList" type="checkbox"/>
+              </label>
+              <!-- Horizontal bar -->
+              <hr>
+
+              <!-- Receptor file selection  -->
+              <button class="button" id="receptorSelector">Receptor</button>
+              <input id="receptorDisplayArea" disabled type="text" placeholder="Your selected receptor (or list) file will appear here.">
+              <!-- Receptor file selection checkboxes -->
+              <label class="float-right">Use TIM Wizard
+                  <input id="receptorUseTIM" type="checkbox"/>
+              </label>
+              <label class="float-right">Use recepor list file
+                  <input id="receptorUseList" type="checkbox"/>
+              </label>
+              <!-- Horizontal bar -->
+              <hr>
+
+              <!-- Box coordinate file selection  -->
+              <button class="button" id="gpfSelector">Grid parameter file</button>
+              <input id="gpfDisplayArea" disabled type="text" placeholder="Your selected Grrid Parameter (or list) file will appear here.">
+              <!-- box coordinate file selection checkboxes -->
+              <label class="float-right">Use box coordinate list file
+                  <input id="gpfUseList" type="checkbox"/>
+              </label>
+              <!-- Horizontal bar -->
+              <hr>
+
+              <!-- Swar command options -->
+              <label>Swarm command options:
+                <input id="swarmCommandOptions" type="text" value="swarm -f swarmCmd.txt -n 1 -l walltime=128:00:00" aria-describedby="ADCyclesHelpText">
+              </label>
+              <label>Swarm jobs per node:
+                <input id="swarJobsPernode" type="number" min="1" value="1" aria-describedby="ADCyclesHelpText">
+              </label>
+              <!-- Horizontal bar -->
+              <hr>
+
+              <!-- Output directory  -->
+              <button class="button" id="selectOutputDirBtn">Output directory</button>
+
+              <!-- Area to display selected directoy -->
+              <input disabled type="text" placeholder="Your selected output directory will appear hear.">
+              <span id="selected-file"></span>
+
+              <!-- new job button  -->
+              <button id="newJobBtn" type="button" class="success button expanded button">New job</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
   <script src="js/foundation/vendor/jquery.js"></script>
   <script src="js/foundation/vendor/what-input.js"></script>
   <script src="js/foundation/vendor/foundation.js"></script>
