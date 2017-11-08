@@ -5,18 +5,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DockoMatic - Input</title>
-  <link rel="stylesheet" href="css/foundation/foundation.css">
-  <link rel="stylesheet" href="css/foundation/foundation.min.css">
-  <link rel="stylesheet" href="css/foundation/app.css">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
   <div class="row">
     <div class="columns">
       <ul class="tabs" data-tabs id="nav-tabs">
-        <li class="tabs-title is-active"><a href="input.html" aria-selected="true">Input</a></li>
-        <li class="tabs-title"><a href="output.html">Output</a></li>
-        <li class="tabs-title"><a href="status.html">Status</a></li>
+        <li class="tabs-title is-active">
+          <a href="input.html" aria-selected="true">Input</a>
+        </li>
+        <li class="tabs-title">
+          <a href="output.html">Output</a>
+        </li>
+        <li class="tabs-title">
+          <a href="status.html">Status</a>
+        </li>
       </ul>
 
       <div class="tabs-content" data-tabs-content="nav-tabs">
@@ -29,53 +35,54 @@
               </label>
               <!-- Use AutoDock checkbox -->
               <label class="float-right">Use AutoDock Vina
-                  <input type="checkbox"/>
+                <input type="checkbox" />
               </label>
               <!-- Horizontal bar -->
               <hr>
 
               <!-- Ligand file selection  -->
-              <button class="button" id="ligandSelector">Ligand</button>
+              <button class="button" id="ligandSelectorBtn">Ligand</button>
               <input id="ligandDisplayArea" disabled type="text" placeholder="Your selected ligand (or list) file will appear here.">
+              <span id="selected-ligand-file"></span>
               <!-- Ligand file selection checkboxes -->
               <label class="float-right">Use TIM Wizard
-                  <input id="ligandUseTIM" type="checkbox"/>
+                <input id="ligandUseTIM" type="checkbox" />
               </label>
               <label class="float-right">Use ligand list file
-                  <input id="ligandUseList" type="checkbox"/>
+                <input id="ligandUseList" type="checkbox" />
               </label>
               <!-- Horizontal bar -->
               <hr>
 
               <!-- Secondary ligand file selection  -->
-              <button class="button" id="secondaryLigandSelector">Secondary ligand</button>
+              <button class="button" id="secondaryLigandSelectorBtn">Secondary ligand</button>
               <input id="secondaryLigandDisplayArea" disabled type="text" placeholder="Your selected secondary ligand (or list) file will appear here.">
               <!-- Secondary file selection checkboxes -->
               <label class="float-right">Use secondary ligand list file
-                  <input id="secondaryLigadUseList" type="checkbox"/>
+                <input id="secondaryLigadUseList" type="checkbox" />
               </label>
               <!-- Horizontal bar -->
               <hr>
 
               <!-- Receptor file selection  -->
-              <button class="button" id="receptorSelector">Receptor</button>
+              <button class="button" id="receptorSelectorBtn">Receptor</button>
               <input id="receptorDisplayArea" disabled type="text" placeholder="Your selected receptor (or list) file will appear here.">
               <!-- Receptor file selection checkboxes -->
               <label class="float-right">Use TIM Wizard
-                  <input id="receptorUseTIM" type="checkbox"/>
+                <input id="receptorUseTIM" type="checkbox" />
               </label>
               <label class="float-right">Use recepor list file
-                  <input id="receptorUseList" type="checkbox"/>
+                <input id="receptorUseList" type="checkbox" />
               </label>
               <!-- Horizontal bar -->
               <hr>
 
               <!-- Box coordinate file selection  -->
-              <button class="button" id="gpfSelector">Grid parameter file</button>
+              <button class="button" id="gpfSelectorBtn">Grid parameter file</button>
               <input id="gpfDisplayArea" disabled type="text" placeholder="Your selected Grrid Parameter (or list) file will appear here.">
               <!-- box coordinate file selection checkboxes -->
               <label class="float-right">Use box coordinate list file
-                  <input id="gpfUseList" type="checkbox"/>
+                <input id="gpfUseList" type="checkbox" />
               </label>
               <!-- Horizontal bar -->
               <hr>
@@ -94,6 +101,7 @@
               <button class="button" id="selectOutputDirBtn">Output directory</button>
               <!-- Area to display selected directoy -->
               <input disabled id="outputDirDisplay" type="text" placeholder="Your selected output directory will appear hear.">
+              <span id="selected-file"></span>
 
               <!-- new job button  -->
               <button id="newJobBtn" type="button" class="success button expanded button">New job</button>
@@ -104,11 +112,14 @@
     </div>
   </div>
 
-  <script src="js/foundation/vendor/jquery.js"></script>
-  <script src="js/foundation/vendor/what-input.js"></script>
-  <script src="js/foundation/vendor/foundation.js"></script>
-  <script src="js/foundation/vendor/foundation.min.js"></script>
-  <script src="js/foundation/app.js"></script>
+  <script>
+    require('./js/input-renderer.js')
+    require('./js/app.js')
+    require('./js/vendor/foundation.js')
+    require('./js/vendor/foundation.min.js')
+    require('./js/vendor/jquery.js')
+    require('./js/vendor/what-input.js')
+  </script>
 </body>
 
 </html>

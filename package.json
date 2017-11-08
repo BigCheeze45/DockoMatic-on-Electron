@@ -1,0 +1,13 @@
+{
+  "name": "dockomatic",
+  "version": "2.0.0",
+  "description": "Proten docking automation tool written in Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Prince Kannah",
+  "devDependencies": {
+    "electron": "~1.7.8"
+  }
+}

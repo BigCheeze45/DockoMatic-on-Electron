@@ -1,21 +1,28 @@
 <!doctype html>
 <html lang="en" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DockoMatic - Status</title>
-  <link rel="stylesheet" href="css/foundation/foundation.css">
-  <link rel="stylesheet" href="css/foundation/foundation.min.css">
-  <link rel="stylesheet" href="css/foundation/app.css">
+  <link rel="stylesheet" href="css/foundation.css">
+  <link rel="stylesheet" href="css/foundation.min.css">
+  <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
   <div class="row">
     <div class="columns">
       <ul class="tabs" data-tabs id="nav-tabs">
-        <li class="tabs-title"><a href="input.html">Input</a></li>
-        <li class="tabs-title"><a href="output.html">Output</a></li>
-        <li class="tabs-title is-active"><a href="status.html" aria-selected="true">Status</a></li>
+        <li class="tabs-title">
+          <a href="input.html">Input</a>
+        </li>
+        <li class="tabs-title">
+          <a href="output.html">Output</a>
+        </li>
+        <li class="tabs-title is-active">
+          <a href="status.html" aria-selected="true">Status</a>
+        </li>
       </ul>
 
       <div class="tabs-content" data-tabs-content="nav-tabs">
@@ -34,11 +41,14 @@
       </div>
     </div>
   </div>
-  <script src="js/foundation/vendor/jquery.js"></script>
-  <script src="js/foundation/vendor/what-input.js"></script>
-  <script src="js/foundation/vendor/foundation.js"></script>
-  <script src="js/foundation/vendor/foundation.min.js"></script>
-  <script src="js/foundation/app.js"></script>
+  <script>
+    require('./js/status-renderer.js')
+    require('./js/app.js')
+    require('./js/vendor/foundation.js')
+    require('./js/vendor/foundation.min.js')
+    require('./js/vendor/jquery.js')
+    require('./js/vendor/what-input.js')
+  </script>
 </body>
 
 </html>
