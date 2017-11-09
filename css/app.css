@@ -1,0 +1,3 @@
+.is-grouped>.button:not(:last-child) {
+    margin-right: 95px;
+}

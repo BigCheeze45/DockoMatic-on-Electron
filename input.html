@@ -21,6 +21,9 @@
           <a href="output.html">Output</a>
         </li>
         <li class="tabs-title">
+          <a href="simSearcherWindow.html">SimSearcher</a>
+        </li>
+        <li class="tabs-title">
           <a href="status.html">Status</a>
         </li>
       </ul>
@@ -41,9 +44,8 @@
               <hr>
 
               <!-- Ligand file selection  -->
-              <button class="button" id="ligandSelectorBtn">Ligand</button>
-              <input id="ligandDisplayArea" disabled type="text" placeholder="Your selected ligand (or list) file will appear here.">
-              <span id="selected-ligand-file"></span>
+              <button class="button" id="selectLigandBtn">Ligand</button>
+              <input id="ligandDisplayArea" required type="text" placeholder="Your selected ligand (or list) file will appear here.">
               <!-- Ligand file selection checkboxes -->
               <label class="float-right">Use TIM Wizard
                 <input id="ligandUseTIM" type="checkbox" />
@@ -55,8 +57,8 @@
               <hr>
 
               <!-- Secondary ligand file selection  -->
-              <button class="button" id="secondaryLigandSelectorBtn">Secondary ligand</button>
-              <input id="secondaryLigandDisplayArea" disabled type="text" placeholder="Your selected secondary ligand (or list) file will appear here.">
+              <button class="button" id="selectSecondaryLigandBtn">Secondary ligand</button>
+              <input id="secondaryLigandDisplayArea" type="text" placeholder="Your selected secondary ligand (or list) file will appear here.">
               <!-- Secondary file selection checkboxes -->
               <label class="float-right">Use secondary ligand list file
                 <input id="secondaryLigadUseList" type="checkbox" />
@@ -65,8 +67,8 @@
               <hr>
 
               <!-- Receptor file selection  -->
-              <button class="button" id="receptorSelectorBtn">Receptor</button>
-              <input id="receptorDisplayArea" disabled type="text" placeholder="Your selected receptor (or list) file will appear here.">
+              <button class="button" id="selectReceptorBtn">Receptor</button>
+              <input id="receptorDisplayArea" required type="text" placeholder="Your selected receptor (or list) file will appear here.">
               <!-- Receptor file selection checkboxes -->
               <label class="float-right">Use TIM Wizard
                 <input id="receptorUseTIM" type="checkbox" />
@@ -78,8 +80,8 @@
               <hr>
 
               <!-- Box coordinate file selection  -->
-              <button class="button" id="gpfSelectorBtn">Grid parameter file</button>
-              <input id="gpfDisplayArea" disabled type="text" placeholder="Your selected Grrid Parameter (or list) file will appear here.">
+              <button class="button" id="selectGPFBtn">Grid parameter file</button>
+              <input id="gpfDisplayArea" required type="text" placeholder="Your selected Grrid Parameter (or list) file will appear here.">
               <!-- box coordinate file selection checkboxes -->
               <label class="float-right">Use box coordinate list file
                 <input id="gpfUseList" type="checkbox" />
@@ -100,11 +102,11 @@
               <!-- Output directory  -->
               <button class="button" id="selectOutputDirBtn">Output directory</button>
               <!-- Area to display selected directoy -->
-              <input disabled id="outputDirDisplay" type="text" placeholder="Your selected output directory will appear hear.">
+              <input required id="outputDirDisplay" type="text" placeholder="Your selected output directory will appear hear.">
               <span id="selected-file"></span>
 
               <!-- new job button  -->
-              <button id="newJobBtn" type="button" class="success button expanded button">New job</button>
+              <button id="newJobBtn" type="submit" class="success button expanded button">New job</button>
             </form>
           </div>
         </div>

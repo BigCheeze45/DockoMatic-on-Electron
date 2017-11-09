@@ -1,50 +1,46 @@
-// This file is required by the index.html file and will
-// be executed in the renderer process for that window.
-// All of the Node.js APIs are available in this process.
 const ipc = require('electron').ipcRenderer
 
-/*
-The JS code below is the basic workflow to open a file
-selector from a button press. This process can be repeated
-for any other button. For now, I'll copy paste for the other
-buttons and eventually minimize it into a fuction. ATM, I'm not
-sure
+/**
+ * The general workflow when a button is clicked is to get the button,
+ * create a channel to send message to main process then send the message
+ * 
+ * On click send signal to main process to show file selection dialog box
+ * The second string is to ID the button that was pushed
 */
-// OUT DIR
-const selectDirBtn = document.getElementById('selectOutputDirBtn')
-// on click send signal to main process to show file selection dialog box
-selectDirBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
-})
-// main process singals back to the renderer process
-// which displays the selected file/directory
-ipc.on('selected-directory', function (event, path) {
-    document.getElementById('selected-file').innerHTML = `${path}`
+
+// OUTPUT DIRECTORY
+const selectOutputDirBtn = document.getElementById('selectOutputDirBtn')
+selectOutputDirBtn.addEventListener('click', function (event) {
+    ipc.send('open-file-dialog', 'selectOutputDirBtn')
 })
 
 // LIGAND
-const selectLigandBtn = document.getElementById('ligandSelectorBtn')
-// on click send signal to main process to show file selection dialog box
+const selectLigandBtn = document.getElementById('selectLigandBtn')
 selectLigandBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
+    ipc.send('open-file-dialog', 'selectLigandBtn')
 })
-// SECONDARY ligand
-const secondayLigandBtn = document.getElementById('secondaryLigandSelectorBtn')
-// on click send signal to main process to show file selection dialog box
-secondayLigandBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
+
+// SECONDARY LIGAND
+const selectSecondaryLigandBtn = document.getElementById('selectSecondaryLigandBtn')
+selectSecondaryLigandBtn.addEventListener('click', function (event) {
+    ipc.send('open-file-dialog', 'selectSecondaryLigandBtn')
 })
 
 // RECPETOR
-const receptorBtn = document.getElementById('receptorSelectorBtn')
-// on click send signal to main process to show file selection dialog box
-receptorBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
+const selectReceptorBtn = document.getElementById('selectReceptorBtn')
+selectReceptorBtn.addEventListener('click', function (event) {
+    ipc.send('open-file-dialog', 'selectReceptorBtn')
 })
 
-// RECPETOR
-const gpfBtn = document.getElementById('gpfSelectorBtn')
-// on click send signal to main process to show file selection dialog box
-gpfBtn.addEventListener('click', function (event) {
-    ipc.send('open-file-dialog')
+// GRID PARAMETER FILE
+const selectGPFBtn = document.getElementById('selectGPFBtn')
+selectGPFBtn.addEventListener('click', function (event) {
+    ipc.send('open-file-dialog', 'selectGPFBtn')
+})
+
+/**
+ * The main process will respond 
+ */
+ipc.on('selected-directory', function (event, path) {
+    document.getElementById('outputDirDisplay').value = `${path}`
 })
