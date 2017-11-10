@@ -4,54 +4,63 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DockoMatic - Query Wizard</title>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/foundation.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <title>Query wizard</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
 </head>
 
 <body>
     <div class="row">
         <div class="columns">
-            <p>Query driver</p>
-            <!-- <ul class="tabs" data-tabs id="nav-tabs">
-                <li class="tabs-title">
-                    <a href="input.html">Input</a>
-                </li>
-                <li class="tabs-title">
-                    <a href="output.html">Output</a>
-                </li>
-                <li class="tabs-title is-active">
-                    <a href="simSearcherWindow.html" aria-selected="true">SimSearcher</a>
-                </li>
-                <li class="tabs-title">
-                    <a href="status.html">Status</a>
-                </li>
-            </ul>
+            <div class="callout clearfix secondary">
+                <h3 style="text-align:center;">Query driver</h3>
+                <!-- Horizontal line -->
+                <hr>
+                <form>
+                    <!-- clustered directory selection  -->
+                    <button class="button" id="selectClusteredDirectory">Clustered directory</button>
+                    <input id="clusteredDirectoryDisplayArea" required type="text" placeholder="Your selected clustered directory will appear here.">
 
-            <div class="tabs-content" data-tabs-content="nav-tabs">
-                <div class="tabs-panel is-active" id="simSearcherWindow.html">
-                    <div class="callout">
-                        <h5>This is a secondary callout</h5>
-                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-                        <a href="input.html">It's dangerous to go alone, take this.</a>
+                    <!-- query molecule selection  -->
+                    <button class="button" id="selectQueryMolecule">Query molecule</button>
+                    <input id="queryMoleculeDisplayArea" required type="text" placeholder="Your selected query molecule will appear here.">
+                    <div class="medium-6 columns">
+                        <label>Similarity metric:
+                            <select id="selectSimilarityMetric" required>
+                                <option selected value="chiSquare">chiSquare</option>
+                                <option value="pdfL1">pdfL1</option>
+                                <option value="pdfL2">pdfL2</option>
+                                <option value="rootOfProduct">rootOfProduct</option>
+                                <option value="functionalGroups">functionalGroups</option>
+                            </select>
+                        </label>
                     </div>
-                    <div class="button-group is-grouped">
-                        <a href="SimSearcher/map.html" class="large button">Map</a>
-                        <a href="SimSearcher/cluster.html" class="large button">Cluster</a>
-                        <a href="SimSearcher/query.html" class="large button">Query</a>
+
+                    <!-- # of simiar molecules to ID  -->
+                    <label for="numberOfSimMoleculesToID">Number of most similar molecules to identify:
+                        <input id="numberOfSimMoleculesToID" type="number" min="1" value="20">
+                    </label>
+
+                    <div>
+                        <button id="queryCancelBtn" class="alert button">Cancel</button>
                     </div>
-                </div>
-            </div> -->
+                    <!-- Horizontal line to seperate finish button & input section -->
+                    <hr>
+
+                    <!-- Finish button  -->
+                    <button id="queryFinishBtn" type="submit" class="success button expanded button">Finish</button>
+                </form>
+            </div>
         </div>
     </div>
     <script>
-        require('./js/simSearcher-renderer.js')
-        require('./js/app.js')
-        require('./js/vendor/foundation.js')
-        require('./js/vendor/foundation.min.js')
-        require('./js/vendor/jquery.js')
-        require('./js/vendor/what-input.js')
+        require('./../js/simSearcher-renderer.js')
+        require('./../js/app.js')
+        require('./../js/vendor/foundation.js')
+        require('./../js/vendor/foundation.min.js')
+        require('././js/vendor/jquery.js')
+        require('./../js/vendor/what-input.js')
     </script>
 </body>
 

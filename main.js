@@ -14,8 +14,9 @@ const dialog = require('electron').dialog
 let mainWindow
 let mapWizardWindow
 let clusterWizardWindow
+let queryWizardWindow
 
-function createWindow() {
+function createMainWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		width: 800,
@@ -44,7 +45,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createMainWindow)
 
 // Quit when all windows are closed.
 // app.on('window-all-closed', function () {
@@ -59,12 +60,20 @@ app.on('activate', function () {
 	// On OS X it's common to re-create a window in the app when the
 	// dock icon is clicked and there are no other windows open.
 	if (mainWindow === null) {
-		createWindow()
+		createMainWindow()
 	}
 })
 
 ipc.on('create-map-window', function (event, arg) {
 	createMapWizardWindow()
+})
+
+ipc.on('create-cluster-window', function (event, arg) {
+	createClusterWizardWindow()
+})
+
+ipc.on('create-query-window', function (event, arg) {
+	createQueryWizardWindow()
 })
 
 /**
@@ -76,10 +85,8 @@ function createMapWizardWindow() {
 	// Create the browser window.
 	mapWizardWindow = new BrowserWindow({
 		width: 800,
-		height: 600,
+		height: 600
 	})
-
-	// and load the index.html of the app.
 	mapWizardWindow.loadURL(url.format({
 		pathname: path.join(__dirname, 'simSearcher/map.html'),
 		protocol: 'file:',
@@ -88,20 +95,36 @@ function createMapWizardWindow() {
 }
 
 /**
- * Create the Molecular Database Mapping window
- * that comes up when the 'Map' button is press
+ * Create the Clustering wizard window
+ * that comes up when the 'Cluster' button is press
  * in the SimSearcher section
  */
 function createClusterWizardWindow() {
 	// Create the browser window.
 	clusterWizardWindow = new BrowserWindow({
 		width: 800,
-		height: 600,
+		height: 600
 	})
-
-	// and load the index.html of the app.
 	clusterWizardWindow.loadURL(url.format({
 		pathname: path.join(__dirname, 'simSearcher/cluster.html'),
+		protocol: 'file:',
+		slashes: true
+	}))
+}
+
+/**
+ * Create the Query wizard window
+ * that comes up when the 'Query' button is press
+ * in the SimSearcher section
+ */
+function createQueryWizardWindow() {
+	// Create the browser window.
+	queryWizardWindow = new BrowserWindow({
+		width: 800,
+		height: 600
+	})
+	queryWizardWindow.loadURL(url.format({
+		pathname: path.join(__dirname, 'simSearcher/query.html'),
 		protocol: 'file:',
 		slashes: true
 	}))

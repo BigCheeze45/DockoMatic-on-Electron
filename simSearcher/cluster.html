@@ -4,54 +4,80 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DockoMatic - Clustering Wizard</title>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/foundation.min.css">
-    <link rel="stylesheet" href="css/app.css">
+    <title>Clustering wizard</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
 </head>
 
 <body>
     <div class="row">
         <div class="columns">
-            <p>Clustering parameters</p>
-            <!-- <ul class="tabs" data-tabs id="nav-tabs">
-                <li class="tabs-title">
-                    <a href="input.html">Input</a>
-                </li>
-                <li class="tabs-title">
-                    <a href="output.html">Output</a>
-                </li>
-                <li class="tabs-title is-active">
-                    <a href="simSearcherWindow.html" aria-selected="true">SimSearcher</a>
-                </li>
-                <li class="tabs-title">
-                    <a href="status.html">Status</a>
-                </li>
-            </ul>
+            <div class="callout clearfix secondary">
+                <h3 style="text-align:center;">Clustering wizard</h3>
+                <!-- Horizontal line -->
+                <hr>
+                <form>
+                    <!-- Mapped directory selection  -->
+                    <button class="button" id="selectMappedDirectoryBtn">Mapped directory</button>
+                    <input id="mappedDirectoryDisplayArea" required type="text" placeholder="Your selected mapped directory appear here.">
 
-            <div class="tabs-content" data-tabs-content="nav-tabs">
-                <div class="tabs-panel is-active" id="simSearcherWindow.html">
-                    <div class="callout">
-                        <h5>This is a secondary callout</h5>
-                        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-                        <a href="input.html">It's dangerous to go alone, take this.</a>
+                    <!-- output directory selection  -->
+                    <button class="button" id="selectClusterOutputDirectoryBtn">Output directory</button>
+                    <input id="clusterOutputDirectoryDisplayArea" required type="text" placeholder="Your selected clustering output directory appear here.">
+
+                    <div class="medium-6 columns">
+                        <label>Similarity metric:
+                            <select id="selectSimilarityMetric" required>
+                                <option selected value="chiSquare">chiSquare</option>
+                                <option value="pdfL1">pdfL1</option>
+                                <option value="pdfL2">pdfL2</option>
+                                <option value="rootOfProduct">rootOfProduct</option>
+                            </select>
+                        </label>
                     </div>
-                    <div class="button-group is-grouped">
-                        <a href="SimSearcher/map.html" class="large button">Map</a>
-                        <a href="SimSearcher/cluster.html" class="large button">Cluster</a>
-                        <a href="SimSearcher/query.html" class="large button">Query</a>
+                    <!-- Cluster levels start -->
+                    <label for="clusterLevelOne">Number clusters at level 1:
+                        <input id="clusterLevelOne" type="number" min="0" value="20">
+                    </label>
+                    <label for="clusterLevelTwo">Number clusters at level 2:
+                        <input id="clusterLevelTwo" type="number" min="0" value="10">
+                    </label>
+                    <label for="clusterLevelThree">Number clusters at level 3:
+                        <input id="clusterLevelThree" type="number" min="0" value="0">
+                    </label>
+                    <hr>
+                    <!-- Cluster levels end -->
+
+                    <label for="clusterNumberOfProcess">Number of processes to create:
+                        <input id="clusterNumberOfProcess" type="number" min="1" value="10">
+                    </label>
+                    
+                    <!-- Advanced run options -->
+                    <label for="clusterAdvancedRunOptions" class="float-right">View advanced run options
+                        <input id="clusterAdvancedRunOptions" type="checkbox" />
+                    </label>
+
+                    <input id="clusterVerboseMode" type="checkbox"><label for="clusterVerboseMode">Verbose mode</label>
+                    <div>
+                        <button id="clusterCancelBtn" class="alert button">Cancel</button>
                     </div>
-                </div>
-            </div> -->
+
+                    <!-- Horizontal line to seperate finish button & input section -->
+                    <hr>
+                    <!-- Finish button  -->
+                    <button id="clusterFinishBtn" type="submit" class="success button expanded button">Finish</button>
+                </form>
+            </div>
         </div>
     </div>
     <script>
-        require('./js/simSearcher-renderer.js')
-        require('./js/app.js')
-        require('./js/vendor/foundation.js')
-        require('./js/vendor/foundation.min.js')
-        require('./js/vendor/jquery.js')
-        require('./js/vendor/what-input.js')
+        require('./../js/simSearcher-renderer.js')
+        require('./../js/app.js')
+        require('./../js/vendor/foundation.js')
+        require('./../js/vendor/foundation.min.js')
+        require('././js/vendor/jquery.js')
+        require('./../js/vendor/what-input.js')
     </script>
 </body>
 
