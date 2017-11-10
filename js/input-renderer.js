@@ -1,3 +1,7 @@
+var jobNumber = 1
+// use to send messages back/forth to main channel
+const ipc = require('electron').ipcRenderer
+
 const selectLigandBtn = document.getElementById('selectLigandBtn')
 selectLigandBtn.onclick = function () {
     const useLigandList = document.getElementById('ligandUseList').checked
@@ -69,8 +73,36 @@ selectOutputDirBtn.onclick = function () {
     showDialog('Select Grid Parameter File list', [{
         name: 'All files',
         extensions: ['*']
+        // if on macOS 'createDirectory' allows directory creation from within the dialog
     }], ['openDirectory', 'createDirectory'], 'outputDirDisplay')
-    // if on macOS 'createDirectory' allows directory creation from within the dialog
+}
+
+// "New job" button: when pushed, it opens a channel and sends signal
+// to main process which then reponse with a signal of its own
+// this signal is caught in output-renderer.js to update the status table
+const newJobBtn = document.getElementById('newJobBtn')
+newJobBtn.onclick = function () {
+    alert(`${newJob.jobNumber}`)
+    // create new job object
+    var newJob = new Object()
+    // fill the object details
+    newJob.jobNumber = jobNumber
+    newJob.ADCycles = document.getElementById('ADCycles').value
+    newJob.ligand = document.getElementById('ligandDisplayArea').value
+    newJob.secondaryLigand = document.getElementById('secondaryLigandDisplayArea').value
+    newJob.receptor = document.getElementById('receptorDisplayArea').value
+    newJob.gpf = document.getElementById('gpfDisplayArea').value
+    newJob.outDir = document.getElementById('outputDirDisplay').value
+    jobNumber = jobNumber + 1
+
+    // write to status table
+    document.getElementById('jobNumTD').value = `${jobNumber}`
+
+    // const ligand = document.getElementById('ligandDisplayArea').value
+    // const secondaryLigand = document.getElementById('secondaryLigandDisplayArea').value
+    // const receptor = document.getElementById('receptorDisplayArea').value
+    // const gpf = document.getElementById('gpfDisplayArea').value
+    // const outDir = document.getElementById('outputDirDisplay').value
 }
 
 /**
