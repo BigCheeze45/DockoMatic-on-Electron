@@ -19,37 +19,42 @@
                 <hr>
                 <form>
                     <!-- database directory selection  -->
-                    <button class="button" id="selectDBDirectory">Database directory</button>
+                    <button class="button" id="selectDBDirectoryBtn">Database directory</button>
                     <input id="dbDirectoryDisplayArea" required type="text" placeholder="Your selected database directory appear here.">
                     <!-- output directory selection  -->
-                    <button class="button" id="selectQueryOutputDirectory">Output directory</button>
-                    <input id="queryOutputDirectory" required type="text" placeholder="Your selected query output directory appear here.">
+                    <button class="button" id="selectMapOutputDirectoryBtn">Output directory</button>
+                    <input id="mapOutputDirectoryDisplayArea" required type="text" placeholder="Your selected output directory appear here.">
 
-                    <label for="queryNumberOfProcess">Number of processes to create:
-                        <input id="queryNumberOfProcess" type="number" min="1" value="1" aria-describedby="ADCyclesHelpText">
+                    <label for="mapNumberOfProcess">Number of processes to create:
+                        <input id="mapNumberOfProcess" type="number" min="1" value="1" aria-describedby="ADCyclesHelpText">
                     </label>
                     <!-- Add swarm options check box -->
                     <label class="float-right">Add Swarm options
-                        <input id="queryAddSwarmOptions" type="checkbox" />
+                        <input id="mapAddSwarmOptions" type="checkbox" onchange="showSwarmCommands()"/>
                     </label>
                     <input id="useShapeDistribution" type="checkbox"><label for="useShapeDistribution">Use shape distributions</label>
                     <input id="usePharmacoFeatures" type="checkbox" required><label for="usePharmacoFeatures">Use Pharmacophore features</label>
 
-                    <label id="swarmOptionsLabel" style="visibility: visible" for="querySwarmOptions">Swarm options:</label>
-                    <input disabled style="visibility: visible" id="querySwarmOptions" required type="text" placeholder="Your selected query output directory appear here.">
+                    <!-- Swarm options are hidden by default -->
+                    <div id="swarOptions" style="visibility: hidden">
+                        <label id="swarmOptionsLabel" for="mapSwarmOptions">Swarm options:</label>
+                        <input id="mapSwarmOptions" type="text">
+                    </div>
+
                     <div>
-                        <button id="queryCancelBtn" class="alert button">Cancel</button>
+                        <button id="mapCancelBtn" class="alert button">Cancel</button>
                     </div>
                     <!-- Horizontal line to seperate finish button & input section -->
                     <hr>
 
                     <!-- Finish button  -->
-                    <button id="queryFinishBtn" type="submit" class="success button expanded button">Finish</button>
+                    <button id="mapFinishBtn" type="submit" class="success button expanded button">Finish</button>
                 </form>
             </div>
         </div>
     </div>
     <script>
+        require('./../js/simSearcher/map-renderer.js')
         require('./../js/simSearcher-renderer.js')
         require('./../js/app.js')
         require('./../js/vendor/foundation.js')
