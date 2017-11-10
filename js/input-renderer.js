@@ -82,7 +82,6 @@ selectOutputDirBtn.onclick = function () {
 // this signal is caught in output-renderer.js to update the status table
 const newJobBtn = document.getElementById('newJobBtn')
 newJobBtn.onclick = function () {
-    alert(`${newJob.jobNumber}`)
     // create new job object
     var newJob = new Object()
     // fill the object details
@@ -121,7 +120,9 @@ function showDialog(dialogTitle, dialogFilters, dialogProperties, displayArea) {
         filters: dialogFilters,
         properties: dialogProperties
     }, function (files) {
-        document.getElementById(displayArea).value = `${files}`
+        if (files) {
+            document.getElementById(displayArea).value = `${files}`
+        }
     })
 
     // destroy dialog prompt to be safe
