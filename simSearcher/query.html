@@ -19,11 +19,11 @@
                 <hr>
                 <form>
                     <!-- clustered directory selection  -->
-                    <button class="button" id="selectClusteredDirectory">Clustered directory</button>
+                    <button class="button" id="selectClusteredDirectoryBtn">Clustered directory</button>
                     <input id="clusteredDirectoryDisplayArea" required type="text" placeholder="Your selected clustered directory will appear here.">
 
                     <!-- query molecule selection  -->
-                    <button class="button" id="selectQueryMolecule">Query molecule</button>
+                    <button class="button" id="selectQueryMoleculeBtn">Query molecule</button>
                     <input id="queryMoleculeDisplayArea" required type="text" placeholder="Your selected query molecule will appear here.">
                     <div class="medium-6 columns">
                         <label>Similarity metric:
@@ -55,6 +55,7 @@
         </div>
     </div>
     <script>
+        require('./../js/simSearcher/query-renderer.js')
         require('./../js/simSearcher-renderer.js')
         require('./../js/app.js')
         require('./../js/vendor/foundation.js')

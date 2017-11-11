@@ -38,10 +38,10 @@
                     </div>
                     <!-- Cluster levels start -->
                     <label for="clusterLevelOne">Number clusters at level 1:
-                        <input id="clusterLevelOne" type="number" min="0" value="20">
+                        <input id="clusterLevelOne" type="number" min="1" value="20">
                     </label>
                     <label for="clusterLevelTwo">Number clusters at level 2:
-                        <input id="clusterLevelTwo" type="number" min="0" value="10">
+                        <input id="clusterLevelTwo" type="number" min="1" value="10">
                     </label>
                     <label for="clusterLevelThree">Number clusters at level 3:
                         <input id="clusterLevelThree" type="number" min="0" value="0">
@@ -52,13 +52,33 @@
                     <label for="clusterNumberOfProcess">Number of processes to create:
                         <input id="clusterNumberOfProcess" type="number" min="1" value="10">
                     </label>
-                    
-                    <!-- Advanced run options -->
-                    <label for="clusterAdvancedRunOptions" class="float-right">View advanced run options
+
+                    <!-- Advanced run options checkbox -->
+                    <label class="float-right">View advanced run options
                         <input id="clusterAdvancedRunOptions" type="checkbox" />
                     </label>
 
                     <input id="clusterVerboseMode" type="checkbox"><label for="clusterVerboseMode">Verbose mode</label>
+
+                    <!-- Advanced run options  -->
+                    <div id="advancedRunOptions" style="display: none">
+                        <label for="statusCheckDelay">Status check delay:
+                            <input id="statusCheckDelay" type="number" min="1" value="120">
+                        </label>
+                        <label for="maxNumberStatusCheck">Max number of status checks:
+                            <input id="maxNumberStatusCheck" type="number" min="1" value="20">
+                        </label>
+                        <label for="numberRetries">Retries:
+                            <input id="numberRetries" type="number" min="1" value="2">
+                        </label>
+                        <label for="maxNumberWriteAttempts">Max number of write attempts:
+                            <input id="maxNumberWriteAttempts" type="number" min="1" value="5">
+                        </label>
+                        <label for="kMeansCycles">Kmeans cycles:
+                            <input id="kMeansCycles" type="number" min="1" value="5">
+                        </label>
+                    </div>
+
                     <div>
                         <button id="clusterCancelBtn" class="alert button">Cancel</button>
                     </div>
@@ -72,6 +92,7 @@
         </div>
     </div>
     <script>
+        require('./../js/simSearcher/cluster-renderer.js')
         require('./../js/simSearcher-renderer.js')
         require('./../js/app.js')
         require('./../js/vendor/foundation.js')

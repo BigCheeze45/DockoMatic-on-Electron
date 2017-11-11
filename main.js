@@ -82,10 +82,18 @@ ipc.on('create-query-window', function (event, arg) {
 
 //// DESTROYING WINDOWS ////
 ipc.on('close-map-window', function (event, arg) {
-	//TODO: implement feature correctly
-	// although the signal is sent, the
-	// main process is not closing the window
 	mapWizardWindow.close()
+	mapWizardWindow = null
+})
+
+ipc.on('close-cluster-window', function (event, arg) {
+	clusterWizardWindow.close()
+	clusterWizardWindow = null
+})
+
+ipc.on('close-query-window', function (event, arg) {
+	queryWizardWindow.close()
+	queryWizardWindow = null
 })
 //// DESTROYING WINDOWS ////
 

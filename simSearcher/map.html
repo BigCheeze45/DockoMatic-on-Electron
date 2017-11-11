@@ -30,13 +30,13 @@
                     </label>
                     <!-- Add swarm options check box -->
                     <label class="float-right">Add Swarm options
-                        <input id="mapAddSwarmOptions" type="checkbox" onchange="showSwarmCommands()"/>
+                        <input id="mapAddSwarmOptions" type="checkbox"/>
                     </label>
                     <input id="useShapeDistribution" type="checkbox"><label for="useShapeDistribution">Use shape distributions</label>
                     <input id="usePharmacoFeatures" type="checkbox" required><label for="usePharmacoFeatures">Use Pharmacophore features</label>
 
                     <!-- Swarm options are hidden by default -->
-                    <div id="swarOptions" style="visibility: hidden">
+                    <div id="swarOptions" style="display: none">
                         <label id="swarmOptionsLabel" for="mapSwarmOptions">Swarm options:</label>
                         <input id="mapSwarmOptions" type="text">
                     </div>

@@ -5,7 +5,7 @@
  * in the Molecular database mapping window
  */
 const YES = 0
-const NO = 1
+const NO  = 1
 const ipc = require('electron').ipcRenderer
 
 const selectDBDirectoryBtn = document.getElementById('selectDBDirectoryBtn')
@@ -40,8 +40,6 @@ mapCancelBtn.onclick = function () {
         buttons: ['Yes', 'No']
     }, function (response) {
         if (response == YES) {
-            // TODO: implement feature correclty
-            // although the message is send, the main process is not closing the window
             ipc.send('close-map-window')
         }
     })
@@ -57,9 +55,9 @@ const swarmOptions = document.getElementById('mapAddSwarmOptions')
 swarmOptions.addEventListener('change', function () {
     const showOptions = document.getElementById('mapAddSwarmOptions').checked
     if (showOptions) {
-        document.getElementById('swarOptions').style.visibility = 'visible'
+        document.getElementById('swarOptions').style.display = 'block'
     } else {
-        document.getElementById('swarOptions').style.visibility = 'hidden'
+        document.getElementById('swarOptions').style.display = 'none'
     }
 })
 
