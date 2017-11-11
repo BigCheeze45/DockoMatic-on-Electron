@@ -34,7 +34,7 @@
             <form>
               <label>AutoDock cycles (ga_run):
                 <!-- AutoDock cycles. Min is to prevent negative values via the selector -->
-                <input id="ADCycles" type="number" min="1" value="100" aria-describedby="ADCyclesHelpText">
+                <input id="ADCycles" type="number" min="1" value="100">
               </label>
               <!-- Use AutoDock checkbox -->
               <label class="float-right">Use AutoDock Vina
@@ -91,10 +91,10 @@
 
               <!-- Swar command options -->
               <label>Swarm command options:
-                <input id="swarmCommandOptions" type="text" value="swarm -f swarmCmd.txt -n 1 -l walltime=128:00:00" aria-describedby="ADCyclesHelpText">
+                <input id="swarmCommandOptions" type="text" value="swarm -f swarmCmd.txt -n 1 -l walltime=128:00:00">
               </label>
               <label>Swarm jobs per node:
-                <input id="swarJobsPernode" type="number" min="1" value="1" aria-describedby="ADCyclesHelpText">
+                <input id="swarJobsPernode" type="number" min="1" value="1">
               </label>
               <!-- Horizontal bar -->
               <hr>

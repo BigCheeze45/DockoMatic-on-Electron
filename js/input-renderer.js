@@ -1,6 +1,7 @@
 var jobNumber = 1
 // use to send messages back/forth to main channel
 const ipc = require('electron').ipcRenderer
+const DEFAULT_SEC_LIGAND_TEXT = "Your selected secondary ligand (or list) file will appear here."
 
 const selectLigandBtn = document.getElementById('selectLigandBtn')
 selectLigandBtn.onclick = function () {
@@ -77,32 +78,40 @@ selectOutputDirBtn.onclick = function () {
     }], ['openDirectory', 'createDirectory'], 'outputDirDisplay')
 }
 
-// "New job" button: when pushed, it opens a channel and sends signal
-// to main process which then reponse with a signal of its own
-// this signal is caught in output-renderer.js to update the status table
+/**
+ * Action performed when 'New job' btn is press:
+ * Grab all the info from the form and wrap it
+ * in an object. Send object to the main process.
+ * Main process pass it along to the status renderer
+ */
 const newJobBtn = document.getElementById('newJobBtn')
-newJobBtn.onclick = function () {
-    // create new job object
+newJobBtn.addEventListener('click', function () {
+    // TODO: investigate turning this into a JSON
+    // object?
     var newJob = new Object()
-    // fill the object details
+
+    //TODO: get number from core driver
+    // consider different implementation
     newJob.jobNumber = jobNumber
     newJob.ADCycles = document.getElementById('ADCycles').value
     newJob.ligand = document.getElementById('ligandDisplayArea').value
-    newJob.secondaryLigand = document.getElementById('secondaryLigandDisplayArea').value
+    
+    // secondary ligand is optional so we need to check
+    // to make sure user has provided something other than the default
+    var secondaryLigand = document.getElementById('secondaryLigandDisplayArea').value
+    if (secondaryLigand !== DEFAULT_SEC_LIGAND_TEXT) {
+        newJob.secondaryLigand = secondaryLigand
+    }
+    newJob.swarmOptions = document.getElementById('swarmCommandOptions').value
+    newJob.swarJobsPerNode = document.getElementById('swarJobsPernode').value
     newJob.receptor = document.getElementById('receptorDisplayArea').value
     newJob.gpf = document.getElementById('gpfDisplayArea').value
     newJob.outDir = document.getElementById('outputDirDisplay').value
-    jobNumber = jobNumber + 1
 
-    // write to status table
-    document.getElementById('jobNumTD').value = `${jobNumber}`
-
-    // const ligand = document.getElementById('ligandDisplayArea').value
-    // const secondaryLigand = document.getElementById('secondaryLigandDisplayArea').value
-    // const receptor = document.getElementById('receptorDisplayArea').value
-    // const gpf = document.getElementById('gpfDisplayArea').value
-    // const outDir = document.getElementById('outputDirDisplay').value
-}
+    // send job to main process which it then passes
+    // along to the status renderer
+    ipc.send('create-new-job', newJob)
+})
 
 /**
  * Show native file/directory selection
