@@ -48,13 +48,13 @@ function createMainWindow() {
 app.on('ready', createMainWindow)
 
 // Quit when all windows are closed.
-// app.on('window-all-closed', function () {
-// 	// On OS X it is common for applications and their menu bar
-// 	// to stay active until the user quits explicitly with Cmd + Q
-// 	if (process.platform !== 'darwin') {
-// 		app.quit()
-// 	}
-// })
+app.on('window-all-closed', function () {
+	// On OS X it is common for applications and their menu bar
+	// to stay active until the user quits explicitly with Cmd + Q
+	if (process.platform !== 'darwin') {
+		app.quit()
+	}
+})
 
 app.on('activate', function () {
 	// On OS X it's common to re-create a window in the app when the
@@ -64,6 +64,9 @@ app.on('activate', function () {
 	}
 })
 
+
+///////// WINDOW MANAGEMENT /////////
+//// CREATING WINDOWS ////
 ipc.on('create-map-window', function (event, arg) {
 	createMapWizardWindow()
 })
@@ -75,6 +78,16 @@ ipc.on('create-cluster-window', function (event, arg) {
 ipc.on('create-query-window', function (event, arg) {
 	createQueryWizardWindow()
 })
+//// CREATING WINDOWS ////
+
+//// DESTROYING WINDOWS ////
+ipc.on('close-map-window', function (event, arg) {
+	//TODO: implement feature correctly
+	// although the signal is sent, the
+	// main process is not closing the window
+	mapWizardWindow.close()
+})
+//// DESTROYING WINDOWS ////
 
 /**
  * Create the Molecular Database Mapping window
@@ -129,3 +142,4 @@ function createQueryWizardWindow() {
 		slashes: true
 	}))
 }
+///////// WINDOW MANAGEMENT /////////
