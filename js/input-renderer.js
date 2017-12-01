@@ -1,11 +1,13 @@
 var jobNumber = 1
 // use to send messages back/forth to main channel
 const ipc = require('electron').ipcRenderer
+
 const DEFAULT_SEC_LIGAND_TEXT = "Your selected secondary ligand (or list) file will appear here."
 
 const selectLigandBtn = document.getElementById('selectLigandBtn')
 selectLigandBtn.onclick = function () {
     const useLigandList = document.getElementById('ligandUseList').checked
+
     if (useLigandList) {
         // dialog title, file filters, type of dialog promt (file selection in this case)
         // input field to populate with selected file
@@ -20,6 +22,21 @@ selectLigandBtn.onclick = function () {
         }], ['openFile'], 'ligandDisplayArea')
     }
 }
+
+const ligandUseTIM = document.getElementById('ligandUseTIM')
+ligandUseTIM.addEventListener('change', function () {
+    const useTIM = document.getElementById('ligandUseTIM').checked
+    if (useTIM) {
+        ipc.send('create-TIM-window')
+        document.getElementById('selectLigandBtn').disabled = true
+        document.getElementById('ligandDisplayArea').disabled = true
+        document.getElementById('ligandUseList').disabled = true
+    } else {
+        document.getElementById('selectLigandBtn').disabled = false
+        document.getElementById('ligandDisplayArea').disabled = false
+        document.getElementById('ligandUseList').disabled = false
+    }
+})
 
 const selectSecondaryLigandBtn = document.getElementById('selectSecondaryLigandBtn')
 selectSecondaryLigandBtn.onclick = function () {
@@ -95,7 +112,7 @@ newJobBtn.addEventListener('click', function () {
     newJob.jobNumber = jobNumber
     newJob.ADCycles = document.getElementById('ADCycles').value
     newJob.ligand = document.getElementById('ligandDisplayArea').value
-    
+
     // secondary ligand is optional so we need to check
     // to make sure user has provided something other than the default
     var secondaryLigand = document.getElementById('secondaryLigandDisplayArea').value

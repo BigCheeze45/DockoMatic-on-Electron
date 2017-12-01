@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIM Wizard: Select model</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="columns">
+            <div class="callout clearfix secondary">
+                <h4 style="text-align: left">Select model</h4>
+                <hr>
+
+                <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+                    <li><a href="stepFour-EditAlignment.html">Previous<span class="show-for-sr">page</span></a></li>
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 1">1</a></li>
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 2">2</a></li>
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 3">3</a></li>
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 4">4</a></li>
+                    <!-- Current page -->
+                    <li class="current"><span class="show-for-sr">You're on page</span> 5</li>
+                    <li class="disabled">Next <span class="show-for-sr">Next</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        require('./../js/timWizard/tim-wizard-render.js')
+        require('./../js/app.js')
+        require('./../js/vendor/foundation.js')
+        require('./../js/vendor/foundation.min.js')
+        require('././js/vendor/jquery.js')
+        require('./../js/vendor/what-input.js')
+    </script>
+</body>
+
+</html>

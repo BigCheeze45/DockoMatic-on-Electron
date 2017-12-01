@@ -4,7 +4,7 @@
   "description": "Proten docking automation tool written in Electron",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron . &"
   },
   "author": "Prince Kannah",
   "devDependencies": {

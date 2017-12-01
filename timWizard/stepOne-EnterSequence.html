@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.I.M Wizard: Enter sequence</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="columns">
+            <div class="callout clearfix secondary">
+                <h4 style="text-align:left;">Enter sequence</h4>
+                <hr>
+
+                <form>
+                    <!-- Sequencing output directory-->
+                    <button class="button" id="sequenceOutDirBtn">Output directory</button>
+                    <input id="sequenceOutDirDisplayArea" required type="text" placeholder="Your selected output directory appears here.">
+
+                    <!-- Sequence selection  -->
+                    <button class="button" id="selectSequenceBtn">Sequence</button>
+                    <textarea id="selectSequenceDisplayArea" required name="sequenceInput" placeholder="Your selected sequence file appears here. You can also write you sequence."
+                        rows="9" cols="9"></textarea>
+                    <hr>
+
+                    <h4>Disulfide bonding</h4>
+                    <label for="residuePairs">Residue pairs:
+                        <input id="residuePairs" type="text" placeholder="13-26:52-77">
+                    </label>
+
+                    <div>
+                        <button id="sequenceCancelBtn" class="alert button">Cancel</button>
+                    </div>
+                </form>
+
+                <!-- Pagination menu -->
+                <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+                    <li class="disabled">Previous <span class="show-for-sr">page</span></li>
+                    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+                    <li><a href="#0" aria-label="Page 2">2</a></li>
+                    <li><a href="#0" aria-label="Page 3">3</a></li>
+                    <li><a href="#0" aria-label="Page 4">4</a></li>
+                    <li><a href="#0" aria-label="Page 5">5</a></li>
+                    <li><a href="stepTwo-SelectTemplate.html" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        require('./../js/timWizard/tim-wizard-render.js')
+        require('./../js/app.js')
+        require('./../js/vendor/foundation.js')
+        require('./../js/vendor/foundation.min.js')
+        require('././js/vendor/jquery.js')
+        require('./../js/vendor/what-input.js')
+    </script>
+</body>
+
+</html>

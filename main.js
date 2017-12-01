@@ -7,6 +7,8 @@ const BrowserWindow = electron.BrowserWindow
 const path = require('path')
 const url = require('url')
 const ipc = require('electron').ipcMain
+const Menu = electron.Menu
+const MenuItem = electron.MenuItem
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -14,6 +16,7 @@ let mainWindow
 let mapWizardWindow
 let clusterWizardWindow
 let queryWizardWindow
+let timWindow
 
 function createMainWindow() {
 	// Create the browser window.
@@ -63,6 +66,22 @@ app.on('activate', function () {
 	}
 })
 
+// Right-click context menu for Step 2 of T.I.M wizard
+const menu = new Menu()
+menu.append(new MenuItem({
+	label: 'Open in browser'
+}))
+
+app.on('browser-window-created', function (event, win) {
+	win.webContents.on('context-menu', function (e, params) {
+		menu.popup(win, params.x, params.y)
+	})
+})
+// ipc.on('show-context-menu', function (event) {
+// 	const win = BrowserWindow.fromWebContents(event.sender)
+// 	menu.popup(win)
+// })
+
 //// NEW JOB BTN ////
 ipc.on('create-new-job', function (event, arg) {
 	mainWindow.loadURL('output.html')
@@ -85,6 +104,10 @@ ipc.on('create-cluster-window', function (event, arg) {
 
 ipc.on('create-query-window', function (event, arg) {
 	createQueryWizardWindow()
+})
+
+ipc.on('create-TIM-window', function (event, arg) {
+	createTIMWindow()
 })
 //// CREATING WINDOWS ////
 
@@ -154,6 +177,18 @@ function createQueryWizardWindow() {
 	})
 	queryWizardWindow.loadURL(url.format({
 		pathname: path.join(__dirname, 'simSearcher/query.html'),
+		protocol: 'file:',
+		slashes: true
+	}))
+}
+
+function createTIMWindow() {
+	timWindow = new BrowserWindow({
+		width: 800,
+		height: 600
+	})
+	timWindow.loadURL(url.format({
+		pathname: path.join(__dirname, 'timWizard/stepOne-EnterSequence.html'),
 		protocol: 'file:',
 		slashes: true
 	}))

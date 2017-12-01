@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIM Wizard: Select alignment</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="columns">
+            <div class="callout clearfix secondary">
+                <h4 style="text-align: left">Select alignment</h4>
+                <hr>
+
+                <table id="alignmentTable" class="hover">
+                    <thead>
+                        <tr>
+                            <th width="200">Alignment</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stepThreeTableBody">
+                        <tr>
+                            <td id="alignmentTD">Placeholder</td>
+                            <td id="locationTD">Placeholder</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h6 style="text-align: center">Generating alignment list. Please wait...</h6>
+                
+                <!-- Cancel button  -->
+                <div>
+                    <button id="sequenceThreeBtn" class="button">Test button: This should not be here when shipping</button>
+                </div>
+
+                <!-- TODO: dynamic progress bar  -->
+                <!-- <div class="primary progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent"
+                    aria-valuemax="100">
+                    <div class="progress-meter" style="width: 25%">
+                        <p class="progress-meter-text">25%</p>
+                    </div>
+                </div> -->
+
+                <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+                    <li><a href="stepTwo-SelectTemplate.html">Previous<span class="show-for-sr">page</span></a></li>
+
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 1">1</a></li>
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 2">2</a></li>
+
+                    <!-- Current page -->
+                    <li class="current"><span class="show-for-sr">You're on page</span> 3</li>
+
+                    <li><a href="#0" aria-label="Page 4">4</a></li>
+                    <li><a href="#0" aria-label="Page 5">5</a></li>
+                    <li><a href="stepFour-EditAlignment.html" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        require('./../js/timWizard/tim-wizard-render.js')
+        require('./../js/app.js')
+        require('./../js/vendor/foundation.js')
+        require('./../js/vendor/foundation.min.js')
+        require('././js/vendor/jquery.js')
+        require('./../js/vendor/what-input.js')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T.I.M Wizard: Select template</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/foundation.min.css">
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="columns">
+            <div class="callout clearfix secondary">
+                <h4 style="text-align:left;">Select template</h4>
+                <hr>
+                <table id="templateTable" class="hover">
+                    <thead>
+                        <tr>
+                            <th width="200">Template</th>
+                            <th>E value</th>
+                            <th width="150">Length</th>
+                            <th width="150">Score</th>
+                            <th width="150">Identities</th>
+                            <th width="150">Positives</th>
+                            <th width="150">Gaps</th>
+                        </tr>
+                    </thead>
+                    <tbody id="stepTwoTableBody">
+                        <tr>
+                            <td id="templateTD">1Z8U:2:B</td>
+                            <td id="eValueTD">7.0E-35</td>
+                            <td id="lengthTD">35</td>
+                            <td id="scoreTD">143 bits (361)</td>
+                            <td id="identitiesTD">79/80 (98%)</td>
+                            <td id="positivesTD">79/80 (98%)</td>
+                            <td id="gapsTD">1/80 (1%)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <form>
+                    <label for="templateNumModels">Number of models
+                        <input type="number" id="templateNumModels" value="5" min="1">
+                    </label>
+
+                    <label for="templateJobsPerNode">Jobs per node
+                        <input type="number" id="templateJobsPerNode" value="1" min="1">
+                    </label>
+
+                    <button type "button" id="browseForTemplateBtn" class="button">
+                        Browse for template
+                    </button>
+                </form>
+
+                <!-- Cancel button  -->
+                <div>
+                    <button id="stepTwoCancelButton" class="alert button">Cancel</button>
+                </div>
+
+                <!-- Pagination menu -->
+                <ul class="pagination text-center" role="navigation" aria-label="Pagination">
+                    <li><a href="stepOne-EnterSequence.html">Previous<span class="show-for-sr">page</span></a></li>
+                    <li> <span class="show-for-sr"></span> <a href="#0" aria-label="Page 1">1</a></li>
+                    <li class="current"><span class="show-for-sr">You're on page</span> 2</li>
+                    <li><a href="#0" aria-label="Page 3">3</a></li>
+                    <li><a href="#0" aria-label="Page 4">4</a></li>
+                    <li><a href="#0" aria-label="Page 5">5</a></li>
+                    <li><a href="stepThree-SelectAlignment.html" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        require('./../js/timWizard/tim-wizard-render.js')
+        require('./../js/app.js')
+        require('./../js/vendor/foundation.js')
+        require('./../js/vendor/foundation.min.js')
+        require('././js/vendor/jquery.js')
+        require('./../js/vendor/what-input.js')
+    </script>
+</body>
+
+</html>
