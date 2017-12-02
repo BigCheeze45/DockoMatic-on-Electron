@@ -27,14 +27,15 @@ const ligandUseTIM = document.getElementById('ligandUseTIM')
 ligandUseTIM.addEventListener('change', function () {
     const useTIM = document.getElementById('ligandUseTIM').checked
     if (useTIM) {
-        ipc.send('create-TIM-window')
         document.getElementById('selectLigandBtn').disabled = true
         document.getElementById('ligandDisplayArea').disabled = true
         document.getElementById('ligandUseList').disabled = true
+        ipc.send('create-TIM-window')
     } else {
         document.getElementById('selectLigandBtn').disabled = false
         document.getElementById('ligandDisplayArea').disabled = false
         document.getElementById('ligandUseList').disabled = false
+        ipc.send('close-tim-window')
     }
 })
 

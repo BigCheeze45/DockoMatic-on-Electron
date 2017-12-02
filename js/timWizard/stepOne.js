@@ -1,32 +1,31 @@
-// const btn = document.getElementById('sequenceThreeBtn')
+const ipc = require('electron').ipcRenderer
 
-// btn.onclick = function () {
-//     var tableBody = document.getElementById("stepThreeTableBody")
+const sequenceOutDirBtn = document.getElementById('sequenceOutDirBtn')
+sequenceOutDirBtn.onclick = function () {
+    showDialog('Select output directory', [{
+        name: 'All files',
+        extensions: ['*']
+        // if on macOS 'createDirectory' allows directory creation from within the dialog
+    }], ['openDirectory', 'createDirectory'], 'sequenceOutDirDisplayArea')
+}
 
-//     var newRow = document.createElement("tr")
-//     // cells for the new row
-//     var alignmentCell = document.createElement("td")
-//     var locationCell = document.createElement("td")
-
-//     var alignmentData = document.createTextNode("Alignment data")
-//     var locationData = document.createTextNode("Location data")
-
-//     alignmentCell.appendChild(alignmentData)
-//     locationCell.appendChild(locationData)
-
-//     newRow.appendChild(alignmentCell)
-//     newRow.appendChild(locationCell)
-
-//     // add all the new info to the table
-//     tableBody.appendChild(newRow)
-// }
+const selectSequenceBtn = document.getElementById('selectSequenceBtn')
+selectSequenceBtn.onclick = function () {
+    showDialog('Select sequence file', [{
+        name: 'Modeller Alignment Readable File',
+        extensions: ['ali']
+    }, {
+        name: 'All files',
+        extensions: ['*']
+    }], ['openFile'], 'selectSequenceDisplayArea')
+}
 
 const cancelBtn = document.getElementById('stepTwoCancelButton')
 /*
-* Ideally, this function would be called after a search is  complete
-* and simply populate the table by filling the TextNode with 
-* search results, allowing users to open it in a browser.
-*/
+ * Ideally, this function would be called after a search is  complete
+ * and simply populate the table by filling the TextNode with 
+ * search results, allowing users to open it in a browser.
+ */
 cancelBtn.onclick = function () {
     var tableBody = document.getElementById("stepTwoTableBody")
 
@@ -65,4 +64,24 @@ cancelBtn.onclick = function () {
     newRow.appendChild(gapsCell)
 
     tableBody.appendChild(newRow)
+}
+
+function showDialog(dialogTitle, dialogFilters, dialogProperties, displayArea) {
+    const {
+        dialog
+    } = require('electron').remote
+    dialog.showOpenDialog({
+        title: dialogTitle,
+        filters: dialogFilters,
+        properties: dialogProperties
+    }, function (files) {
+        if (files) {
+            if (displayArea != null) {
+                document.getElementById(displayArea).value = `${files}`
+            }
+        }
+    })
+
+    // destroy dialog prompt to be safe
+    dialog = null
 }

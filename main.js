@@ -22,7 +22,8 @@ function createMainWindow() {
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		width: 800,
-		height: 600
+		height: 600,
+		fullscreen: true
 	})
 
 	// and load the index.html of the app.
@@ -31,6 +32,8 @@ function createMainWindow() {
 		protocol: 'file:',
 		slashes: true
 	}))
+
+	mainWindow.maximize()
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
@@ -125,6 +128,14 @@ ipc.on('close-cluster-window', function (event, arg) {
 ipc.on('close-query-window', function (event, arg) {
 	queryWizardWindow.close()
 	queryWizardWindow = null
+})
+
+ipc.on('close-tim-window', function (event, arg) {
+	// incase the pop-window was already closed by click 'x'
+	if (timWindow != null) {
+		timWindow.close()
+		timWindow = null
+	}
 })
 //// DESTROYING WINDOWS ////
 
